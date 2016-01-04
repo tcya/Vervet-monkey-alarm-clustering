@@ -1,0 +1,796 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25967,        787]
+NotebookOptionsPosition[     23494,        704]
+NotebookOutlinePosition[     23905,        722]
+CellTagsIndexPosition[     23862,        719]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.657468752030808*^9, 3.657468769399282*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ReduceSamplingRate", "[", 
+   RowBox[{"signal_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", "signal"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tmp", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}], "=", 
+      RowBox[{
+       RowBox[{"tmp", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ";;", "k"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tmp", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1", ",", "2"}], "]"}], "]"}], "=", 
+      RowBox[{
+       RowBox[{"tmp", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1", ",", "2"}], "]"}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ";;", "k"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tmp", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "2"}], "]"}], "]"}], "=", 
+      RowBox[{
+       RowBox[{"tmp", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "2"}], "]"}], "]"}], "/", "k"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.657496465912117*^9, 3.657496542499221*^9}, {
+  3.657496711553012*^9, 3.657496788762196*^9}, {3.657496851340966*^9, 
+  3.657496912328885*^9}}],
+
+Cell[BoxData[
+ RowBox[{"snake", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{"\"\<snake.wav\>\"", ",", "\"\<wav\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6574673842179728`*^9, 3.657467403171447*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "[", "snake", "]"}]], "Input",
+ CellChangeTimes->{{3.657467438935903*^9, 3.657467446041852*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "[", 
+  RowBox[{
+   RowBox[{"ReduceSamplingRate", "[", 
+    RowBox[{"snake", ",", "2"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"9", ",", "10"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "11000"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "2"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frequency\>\"", ",", "None"}], "}"}]}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", "Medium"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "150"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.657527132567037*^9, 3.6575271595997047`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"eagles", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{
+      RowBox[{"\"\<eagle_\>\"", "<>", 
+       RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<.wav\>\""}], ",", 
+      "\"\<wav\>\""}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "6"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.657468829458706*^9, 3.6574688823189898`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "/@", "eagles"}]], "Input",
+ CellChangeTimes->{{3.657468899181141*^9, 3.657468900889875*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "[", 
+  RowBox[{
+   RowBox[{"eagles", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ",", "512", ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2.3", ",", "3.3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "20000"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.65749509487991*^9, 3.657495129757366*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "[", 
+  RowBox[{
+   RowBox[{"ReduceSamplingRate", "[", 
+    RowBox[{
+     RowBox[{"eagles", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", "2"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2.4", ",", "3.3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "10000"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "2"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frequency\>\"", ",", "None"}], "}"}]}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", "Medium"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "150"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.657526828725518*^9, 3.6575268454965353`*^9}, {
+  3.657526877352828*^9, 3.657526909083302*^9}, {3.657526995046124*^9, 
+  3.657527012119102*^9}}],
+
+Cell[BoxData[
+ RowBox[{"leopards", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{
+      RowBox[{"\"\<leopard_\>\"", "<>", 
+       RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<.wav\>\""}], ",", 
+      "\"\<wav\>\""}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "2"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.657468927437992*^9, 3.657468942729228*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "/@", "leopards"}]], "Input",
+ CellChangeTimes->{{3.6574689513848267`*^9, 3.6574689554414473`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"spLeo", "=", 
+  RowBox[{"Spectrogram", "[", 
+   RowBox[{
+    RowBox[{"leopards", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8", ",", "9"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "20000"}], "}"}]}], "}"}]}], ",", 
+    RowBox[{"AspectRatio", "\[Rule]", "2"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6574923804778233`*^9, 3.6574924850636797`*^9}, {
+  3.6574925344736357`*^9, 3.65749256413066*^9}, {3.6574927187040653`*^9, 
+  3.657492719129987*^9}, {3.657492815064225*^9, 3.657492886607265*^9}, {
+  3.657492927940238*^9, 3.657492928017296*^9}, {3.6574931387353973`*^9, 
+  3.6574931406590347`*^9}, {3.6574934816147833`*^9, 3.657493497433749*^9}, {
+  3.657493574799761*^9, 3.657493612519865*^9}, {3.657493655869494*^9, 
+  3.6574936666158533`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Spectrogram", "[", 
+  RowBox[{
+   RowBox[{"ReduceSamplingRate", "[", 
+    RowBox[{
+     RowBox[{"leopards", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], ",", "2"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"8", ",", "9"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "10000"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "2"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frequency\>\"", ",", "None"}], "}"}]}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", "Medium"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "150"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.657526484946521*^9, 3.657526616534033*^9}, 
+   3.657526921600274*^9}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"Mean", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"SpectrogramArray", "[", 
+       RowBox[{
+        RowBox[{"ReduceSamplingRate", "[", 
+         RowBox[{"snake", ",", "2"}], "]"}], ",", "1024", ",", "64"}], "]"}], 
+      "]"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.657509799989851*^9, 3.657509804265277*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{"Mean", ",", 
+    RowBox[{"Abs", "[", 
+     RowBox[{"SpectrogramArray", "[", 
+      RowBox[{
+       RowBox[{"ReduceSamplingRate", "[", 
+        RowBox[{"snake", ",", "2"}], "]"}], ",", "1024", ",", "64"}], "]"}], 
+     "]"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{3.657509816483488*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{"Mean", ",", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"SpectrogramArray", "[", 
+         RowBox[{
+          RowBox[{"ReduceSamplingRate", "[", 
+           RowBox[{"#", ",", "2"}], "]"}], ",", "1024", ",", "64"}], "]"}], 
+        "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}], "&"}], "/@", 
+  "eagles"}]], "Input",
+ CellChangeTimes->{{3.65750952367443*^9, 3.657509621824994*^9}, {
+  3.6575096645010033`*^9, 3.6575097142704782`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{"Mean", ",", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"SpectrogramArray", "[", 
+         RowBox[{
+          RowBox[{"ReduceSamplingRate", "[", 
+           RowBox[{"#", ",", "2"}], "]"}], ",", "1024", ",", "64"}], "]"}], 
+        "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}], "&"}], "/@", 
+  "leopards"}]], "Input",
+ CellChangeTimes->{{3.6575097546484528`*^9, 3.657509755535006*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"Map", "[", 
+     RowBox[{"Mean", ",", 
+      RowBox[{"Abs", "[", 
+       RowBox[{"SpectrogramArray", "[", 
+        RowBox[{
+         RowBox[{"ReduceSamplingRate", "[", 
+          RowBox[{"#", ",", "2"}], "]"}], ",", "1024", ",", "64"}], "]"}], 
+       "]"}]}], "]"}], "]"}], "&"}], "/@", "leopards"}]], "Input",
+ CellChangeTimes->{{3.657509772308489*^9, 3.657509778962768*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GenFrames", "[", 
+    RowBox[{"audio_", ",", "thresh_"}], "]"}], ":=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Abs", "[", 
+      RowBox[{"SpectrogramArray", "[", 
+       RowBox[{"audio", ",", "1024", ",", "64", ",", "HammingWindow"}], "]"}],
+       "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Mean", "[", "#", "]"}], ">", "thresh"}], "&"}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.657510954930489*^9, 3.6575110895919437`*^9}, {
+  3.65751121024617*^9, 3.6575112991710033`*^9}, {3.6575113507696247`*^9, 
+  3.657511387114171*^9}, {3.6575124409688*^9, 3.657512449368719*^9}, {
+  3.657528303724855*^9, 3.657528307908436*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Filtering", "Subsection",
+ CellChangeTimes->{{3.658479670107728*^9, 3.6584796756605043`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"thresh", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"snakeFeats", "=", 
+   RowBox[{"GenFrames", "[", 
+    RowBox[{
+     RowBox[{"ReduceSamplingRate", "[", 
+      RowBox[{"snake", ",", "2"}], "]"}], ",", "thresh"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eaglesFeats", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"GenFrames", "[", 
+        RowBox[{
+         RowBox[{"ReduceSamplingRate", "[", 
+          RowBox[{"#", ",", "2"}], "]"}], ",", "thresh"}], "]"}], "&"}], "/@",
+       "eagles"}], ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"leopFeats", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"GenFrames", "[", 
+        RowBox[{
+         RowBox[{"ReduceSamplingRate", "[", 
+          RowBox[{"#", ",", "2"}], "]"}], ",", "thresh"}], "]"}], "&"}], "/@",
+       "leopards"}], ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Dimensions", "/@", 
+  RowBox[{"{", 
+   RowBox[{"snakeFeats", ",", "eaglesFeats", ",", "leopFeats"}], 
+   "}"}]}]}], "Input",
+ CellChangeTimes->{{3.6575164704661407`*^9, 3.657516558110002*^9}, {
+   3.657516608042344*^9, 3.657516646995412*^9}, {3.657517465031177*^9, 
+   3.6575174750077143`*^9}, {3.657517609173408*^9, 3.657517614995184*^9}, {
+   3.657517696791644*^9, 3.6575177139183683`*^9}, {3.657517778685464*^9, 
+   3.657517786456876*^9}, {3.657517847162756*^9, 3.657517847556427*^9}, 
+   3.6575179448423767`*^9, {3.657528368013257*^9, 3.657528369159482*^9}, {
+   3.657528427620039*^9, 3.65752852240842*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1603", ",", "1024"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1307", ",", "1024"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"992", ",", "1024"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.657516563017001*^9, 3.657516651745425*^9, 3.6575175200173388`*^9, 
+   3.6575176196965113`*^9, {3.6575177040367928`*^9, 3.6575177182163343`*^9}, 
+   3.657517791364661*^9, 3.6575178520927563`*^9, 3.657517949592498*^9, 
+   3.657528327245656*^9, 3.657528374134384*^9, {3.657528432764421*^9, 
+   3.657528527701558*^9}, 3.65848276344482*^9, 3.660935443661035*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rawFeat", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"snakeFeats", ",", "eaglesFeats", ",", "leopFeats"}], "}"}], 
+     ",", "1"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.657512418166542*^9, {3.657512455570623*^9, 3.6575125421841297`*^9}, {
+   3.657512584749834*^9, 3.657512688337084*^9}, {3.6575166589219837`*^9, 
+   3.6575166900332737`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["PCA with 99% variance conserved", "Subsection",
+ CellChangeTimes->{{3.658479686533368*^9, 3.6584796944450912`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pca", "=", 
+   RowBox[{"PrincipalComponents", "[", 
+    RowBox[{"rawFeat", ",", 
+     RowBox[{"Method", "\[Rule]", "\"\<Correlation\>\""}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.657512310972952*^9, 3.657512313078706*^9}, {
+  3.6575127130082617`*^9, 3.6575127146088037`*^9}, {3.657516205713254*^9, 
+  3.6575162102954206`*^9}, {3.657516361795085*^9, 3.657516365116153*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"varPCA", "=", 
+   RowBox[{"Variance", "[", "pca", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6575162149069233`*^9, 3.657516264784155*^9}, {
+  3.65751635415644*^9, 3.657516358827639*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tmp", "=", 
+   RowBox[{"0.99", 
+    RowBox[{"Total", "[", "varPCA", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "varPCA", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"tmp", "-", 
+       RowBox[{"varPCA", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}]}], ";", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"tmp", "<", "0"}], ",", 
+       RowBox[{
+        RowBox[{"Print", "[", "i", "]"}], ";", 
+        RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.657516273466818*^9, 3.657516348042457*^9}}],
+
+Cell[BoxData["274"], "Print",
+ CellChangeTimes->{
+  3.657516348773123*^9, 3.6575163800277433`*^9, 3.657516716615965*^9, 
+   3.657517539935611*^9, 3.65751763491117*^9, {3.657517709012804*^9, 
+   3.657517722795918*^9}, 3.657517797354332*^9, 3.6575178575245523`*^9, 
+   3.657517954625712*^9, 3.657528338391951*^9, 3.657528377202971*^9, {
+   3.6575284362259483`*^9, 3.657528530467725*^9}, 3.658482771335404*^9, 
+   3.660935461251837*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"feats", "=", 
+   RowBox[{"rawFeat", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{";;", "i"}]}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.657516384739065*^9, 3.6575164034673777`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Results", "Subsection",
+ CellChangeTimes->{{3.658482780886602*^9, 3.658482782243586*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Hierachical clustring", "Subsubsection",
+ CellChangeTimes->{{3.660937737549864*^9, 3.660937746453065*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cluster3", "=", 
+   RowBox[{"FindClusters", "[", 
+    RowBox[{
+     RowBox[{"feats", "->", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"ConstantArray", "[", 
+           RowBox[{"\"\<snake\>\"", ",", 
+            RowBox[{"Length", "[", "snakeFeats", "]"}]}], "]"}], ",", 
+          RowBox[{"ConstantArray", "[", 
+           RowBox[{"\"\<eagle\>\"", ",", 
+            RowBox[{"Length", "[", "eaglesFeats", "]"}]}], "]"}], ",", 
+          RowBox[{"ConstantArray", "[", 
+           RowBox[{"\"\<leopard\>\"", ",", 
+            RowBox[{"Length", "[", "leopFeats", "]"}]}], "]"}]}], "}"}], ",", 
+        "1"}], "]"}]}], ",", "3", ",", 
+     RowBox[{"Method", "\[Rule]", "\"\<Agglomerate\>\""}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.657517175639389*^9, 3.6575171952682447`*^9}, 
+   3.660935374607068*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "\"\<snake\>\""}], "]"}], "&"}], "/@", 
+  "cluster3"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "\"\<eagle\>\""}], "]"}], "&"}], "/@", 
+  "cluster3"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "\"\<leopard\>\""}], "]"}], "&"}], "/@", 
+  "cluster3"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1603", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.660935475226254*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1307", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.660935475234335*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"981", ",", "10", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{3.6609354752425327`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["kmeans", "Subsubsection",
+ CellChangeTimes->{{3.660937757916741*^9, 3.66093776149288*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"kmeans", "=", 
+   RowBox[{"ClusteringComponents", "[", 
+    RowBox[{"feats", ",", "3", ",", "1", ",", 
+     RowBox[{"Method", "\[Rule]", "\"\<KMeans\>\""}], ",", 
+     RowBox[{"\"\<RandomSeed\>\"", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"kmeans", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"kmeans", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", 
+        RowBox[{"Length", "[", "snakeFeats", "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"kmeans", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "snakeFeats", "]"}], "+", "1"}], ";;", 
+        RowBox[{
+         RowBox[{"Length", "[", "snakeFeats", "]"}], "+", 
+         RowBox[{"Length", "[", "eaglesFeats", "]"}]}]}], "]"}], "]"}], ",", 
+     RowBox[{"kmeans", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "snakeFeats", "]"}], "+", 
+         RowBox[{"Length", "[", "eaglesFeats", "]"}], "+", "1"}], ";;"}], 
+       "]"}], "]"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "1"}], "]"}], "&"}], "/@", 
+  "kmeans"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "2"}], "]"}], "&"}], "/@", 
+  "kmeans"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "3"}], "]"}], "&"}], "/@", "kmeans"}]}], "Input",
+ CellChangeTimes->{{3.6609359942783957`*^9, 3.660936014242837*^9}, {
+   3.6609361431372957`*^9, 3.6609361476011047`*^9}, {3.660936482134521*^9, 
+   3.660936491739669*^9}, 3.660936550642185*^9, 3.6609376949359083`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1593", ",", "530", ",", "451"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.660936453490233*^9, {3.6609365553302107`*^9, 3.6609365617076483`*^9}, 
+   3.660936799672044*^9, 3.660937696702489*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10", ",", "777", ",", "13"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.660936453490233*^9, {3.6609365553302107`*^9, 3.6609365617076483`*^9}, 
+   3.660936799672044*^9, 3.660937696713484*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "528"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.660936453490233*^9, {3.6609365553302107`*^9, 3.6609365617076483`*^9}, 
+   3.660936799672044*^9, 3.6609376967216187`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["PAM", "Subsubsection",
+ CellChangeTimes->{{3.6609377659246473`*^9, 3.660937766204891*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pam", "=", 
+   RowBox[{"ClusteringComponents", "[", 
+    RowBox[{"feats", ",", "3", ",", "1", ",", 
+     RowBox[{"Method", "\[Rule]", "\"\<PAM\>\""}], ",", 
+     RowBox[{"\"\<RandomSeed\>\"", "\[Rule]", "1"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"pam", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pam", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", 
+        RowBox[{"Length", "[", "snakeFeats", "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"pam", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "snakeFeats", "]"}], "+", "1"}], ";;", 
+        RowBox[{
+         RowBox[{"Length", "[", "snakeFeats", "]"}], "+", 
+         RowBox[{"Length", "[", "eaglesFeats", "]"}]}]}], "]"}], "]"}], ",", 
+     RowBox[{"pam", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "snakeFeats", "]"}], "+", 
+         RowBox[{"Length", "[", "eaglesFeats", "]"}], "+", "1"}], ";;"}], 
+       "]"}], "]"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "1"}], "]"}], "&"}], "/@", 
+  "pam"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "2"}], "]"}], "&"}], "/@", 
+  "pam"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{"#", ",", "3"}], "]"}], "&"}], "/@", "pam"}]}], "Input",
+ CellChangeTimes->{{3.6609359942783957`*^9, 3.660936014242837*^9}, {
+   3.6609361431372957`*^9, 3.6609361476011047`*^9}, {3.660936482134521*^9, 
+   3.660936491739669*^9}, 3.660936550642185*^9, 3.660936974948711*^9, 
+   3.660937054985939*^9, {3.6609375481017637`*^9, 3.66093755022724*^9}, {
+   3.66093759823139*^9, 3.660937611873249*^9}, 3.660937679565374*^9, {
+   3.660937711241152*^9, 3.660937716223617*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1550", ",", "349", ",", "338"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.660936980231409*^9, 3.6609370646387663`*^9, 3.6609375175626497`*^9, 
+   3.6609375570126266`*^9, {3.660937604654481*^9, 3.660937621126183*^9}, 
+   3.6609376872869*^9, 3.66093772678368*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"53", ",", "958", ",", "49"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.660936980231409*^9, 3.6609370646387663`*^9, 3.6609375175626497`*^9, 
+   3.6609375570126266`*^9, {3.660937604654481*^9, 3.660937621126183*^9}, 
+   3.6609376872869*^9, 3.660937726790182*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "605"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.660936980231409*^9, 3.6609370646387663`*^9, 3.6609375175626497`*^9, 
+   3.6609375570126266`*^9, {3.660937604654481*^9, 3.660937621126183*^9}, 
+   3.6609376872869*^9, 3.6609377267938013`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{957, 751},
+WindowMargins->{{8, Automatic}, {Automatic, 35}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 189, 4, 28, "Input"],
+Cell[750, 26, 1507, 41, 130, "Code"],
+Cell[2260, 69, 204, 4, 28, "Input"],
+Cell[2467, 75, 134, 2, 28, "Input"],
+Cell[2604, 79, 707, 18, 46, "Input"],
+Cell[3314, 99, 420, 11, 28, "Input"],
+Cell[3737, 112, 131, 2, 28, "Input"],
+Cell[3871, 116, 480, 13, 28, "Input"],
+Cell[4354, 131, 867, 22, 46, "Input"],
+Cell[5224, 155, 422, 11, 28, "Input"],
+Cell[5649, 168, 137, 2, 28, "Input"],
+Cell[5789, 172, 906, 20, 28, "Input"],
+Cell[6698, 194, 791, 21, 46, "Input"],
+Cell[7492, 217, 512, 14, 28, "Input"],
+Cell[8007, 233, 368, 10, 28, "Input"],
+Cell[8378, 245, 635, 18, 46, "Input"],
+Cell[9016, 265, 587, 17, 46, "Input"],
+Cell[9606, 284, 454, 12, 28, "Input"],
+Cell[10063, 298, 708, 18, 50, "Code"],
+Cell[CellGroupData[{
+Cell[10796, 320, 99, 1, 44, "Subsection"],
+Cell[CellGroupData[{
+Cell[10920, 325, 1649, 42, 97, "Input"],
+Cell[12572, 369, 629, 14, 28, "Output"]
+}, Open  ]],
+Cell[13216, 386, 426, 11, 28, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13679, 402, 121, 1, 44, "Subsection"],
+Cell[13803, 405, 421, 9, 28, "Input"],
+Cell[14227, 416, 226, 5, 28, "Input"],
+Cell[CellGroupData[{
+Cell[14478, 425, 777, 23, 80, "Input"],
+Cell[15258, 450, 433, 7, 21, "Print"]
+}, Open  ]],
+Cell[15706, 460, 250, 7, 28, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15993, 472, 95, 1, 44, "Subsection"],
+Cell[CellGroupData[{
+Cell[16113, 477, 112, 1, 35, "Subsubsection"],
+Cell[16228, 480, 910, 23, 97, "Input"],
+Cell[CellGroupData[{
+Cell[17163, 507, 450, 15, 63, "Input"],
+Cell[17616, 524, 128, 3, 28, "Output"],
+Cell[17747, 529, 128, 3, 28, "Output"],
+Cell[17878, 534, 130, 3, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18057, 543, 96, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[18178, 548, 1664, 46, 131, "Input"],
+Cell[19845, 596, 233, 5, 28, "Output"],
+Cell[20081, 603, 230, 5, 28, "Output"],
+Cell[20314, 610, 230, 5, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20593, 621, 96, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[20714, 626, 1829, 49, 131, "Input"],
+Cell[22546, 677, 302, 6, 28, "Output"],
+Cell[22851, 685, 300, 6, 28, "Output"],
+Cell[23154, 693, 300, 6, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
