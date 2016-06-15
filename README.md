@@ -1,8 +1,7 @@
 # Vervet_monkey_alarm_clustering
 A clustering on records of vervet monkey's three types of alarms
 
-Human’s language ability is distinctive, while animals do show some primitive speaking abilities.
-The first clear evidence was found in vervet monkey, which has been found to use three types of alarms in wild, i.e., snake alarms, eagle alarms, and leopard alarms. Each alarm evokes contrasting responses. Monkeys on the ground respond to leopard alarms by running into trees, to eagle alarms by looking up, and to snake alarms by looking down [1,2].
+Human has distinctive language ability, while animals do show some primitive speaking abilities. The first clear evidence was found on vervet monkey, which has been shown to use three types of alarm in wild, i.e., snake alarm, eagle alarm, and leopard alarm. Each alarm evokes contrasting responses. For instance, monkeys respond to leopard alarm by running up to trees, to eagle alarm by looking up, and to snake alarm by looking down [1,2].
 
 Here I propose a methodological frame to apply machine learning to acoustic primatology.
 
