@@ -10,7 +10,7 @@ First, we apply clustering to audio records which primatologists believe to have
 
 Then we can turn to supervised learning. For example, we can use existing records to train and cross-validate an artificial network, or support vector machine. If it turns out well, we can use it to recognize new records in the wild.
 
-Finally, the trained algorithm can be implemented in laptop, or even smart phone. Imagine a primatologist working in the wild, uses a phone to record animal's speech, then the meaning is returned, so cool..
+Finally, the trained algorithm can be implemented in laptop, or even smart phone. Imagine a primatologist working in the wild, using a phone to record animal's speech, then the meaning is returned, so cool..
 
 I did a primitive study. I extracted the audio track from http://www.arkive.org/vervet/chlorocebus-pygerythrus/video-11a.html, manually truncated it to small parts containing different type of alarms. For each small record extracted:
 
