@@ -6,7 +6,7 @@ The first clear evidence was found in vervet monkey, which has been found to use
 
 Here I propose a methodological frame to apply machine learning to acoustic primatology.
 
-First, we apply clustering to audio records which primatologists believe to be have certain types of meaning. If the classification obtained from machine agrees to that decided by primatologists, the guess is verified.
+First, we apply clustering to audio records which primatologists believe to have certain types of meaning. If the classification obtained from machine agrees to that decided by primatologists, the guess is verified.
 
 Then we can turn to supervised learning. For example, we can use existing records to train and cross-validate an artificial network, or support vector machine. If it turns out well, we can use it to recognize new records in the wild.
 
